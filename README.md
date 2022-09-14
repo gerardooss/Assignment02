@@ -1,20 +1,22 @@
-# Link Aplikasi Heroku
+## Link Aplikasi Heroku
 [https://katalog-kita-semua.herokuapp.com/katalog/details/]
 
 
-# Bagan yang berisi request client
+## Bagan yang berisi request client
 Client --internet--> Server Django (manage.py -> views.py -> katalog.html) --internet--> Web Page
+![image](https://drive.google.com/file/d/1drV9UsVh3Yb8nHF5hYuawCMFiKW548ic/view?usp=sharing)
+
 
 Ketika user memasukkan url pada browser berarti user melakukan request. Request ini dilakukan lewat medium internet untuk terhubung dengan server Django.
 
 Berikutnya, server django akan menjalankan manage.py kemudian akan diteruskan ke views.py yang melibatkan models.py. models.py menggunakan data yang diambil dari database. Views.py akan mengembalikan hasil render dari katalog.html yang kemudian akan ditampilkan laman web page. Setelah itu, lewat medium internet lagi, web page akan ditampilkan pada perangkat client sebagai response dari request user.
 
 
-# Penggunaan Virtual Environtment
+## Penggunaan Virtual Environtment
 Project python seringkali membutuhkan dependent yang berbeda-beda. Virtual Environtment berguna untuk mengisolasi package/dependent aplikasi agar tidak bertabrakan dengan versi lain.
 
 
-# Implementasi pada Tugas 2
+## Implementasi pada Tugas 2
 1. Membuat sebuah fungsi pada views.py yang dapat melakukan pengambilan data dari model dan dikembalikan ke dalam sebuah HTML.
     > Melakukan import dari katalog.models.
     > Membuat sebuah function untuk memasukkan data yang diambil ke dalam sebuah variable untuk diteruskan ke HTML.
