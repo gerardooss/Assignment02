@@ -3,17 +3,15 @@
 
 
 ## Bagan yang berisi request client
-Client --internet--> Server Django (manage.py -> views.py -> katalog.html) --internet--> Web Page
 ![](bagan_django.jpg)
-
 
 Ketika user memasukkan url pada browser berarti user melakukan request. Request ini dilakukan lewat medium internet untuk terhubung dengan server Django.
 
-Berikutnya, server django akan menjalankan manage.py kemudian akan diteruskan ke views.py yang melibatkan models.py. models.py menggunakan data yang diambil dari database. Views.py akan mengembalikan hasil render dari katalog.html yang kemudian akan ditampilkan laman web page. Setelah itu, lewat medium internet lagi, web page akan ditampilkan pada perangkat client sebagai response dari request user.
+Berikutnya, server django akan menjalankan manage.py kemudian akan diteruskan ke views.py yang melibatkan models.py. models.py menggunakan data yang diambil dari database. Views.py akan mengembalikan hasil render dari katalog.html yang kemudian akan ditampilkan laman web page. Setelah itu, lewat medium internet lagi, web page akan ditampilkan pada perangkat client sebagai respons dari request user.
 
 
 ## Penggunaan Virtual Environtment
-Project python seringkali membutuhkan dependent yang berbeda-beda. Virtual Environtment berguna untuk mengisolasi package/dependent aplikasi agar tidak bertabrakan dengan versi lain.
+Project python seringkali membutuhkan dependent yang berbeda-beda. Virtual Environtment berguna untuk mengisolasi package/dependent proyek django agar tidak bertabrakan dengan versi lain.
 
 
 ## Implementasi pada Tugas 2
