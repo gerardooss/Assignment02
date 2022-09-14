@@ -4,7 +4,7 @@
 
 ## Bagan yang berisi request client
 Client --internet--> Server Django (manage.py -> views.py -> katalog.html) --internet--> Web Page
-![image](https://drive.google.com/file/d/1drV9UsVh3Yb8nHF5hYuawCMFiKW548ic/view?usp=sharing)
+![](bagan_django.jpg)
 
 
 Ketika user memasukkan url pada browser berarti user melakukan request. Request ini dilakukan lewat medium internet untuk terhubung dengan server Django.
