@@ -1,12 +1,11 @@
 # Assignment 3
 ### App Links
-html: https://katalog-kita-semua.herokuapp.com/mywatchlist/html/
-xml: https://katalog-kita-semua.herokuapp.com/mywatchlist/xml/
-json: https://katalog-kita-semua.herokuapp.com/mywatchlist/json/
+html: https://katalog-kita-semua.herokuapp.com/mywatchlist/html/ <br>
+xml: https://katalog-kita-semua.herokuapp.com/mywatchlist/xml/ <br>
+json: https://katalog-kita-semua.herokuapp.com/mywatchlist/json/ <br>
 
 ## Perbedaan antara JSON, XML, dan HTML
 ### JSON (JavaScripts Object Notation)
-JSON adalah sebuah format yang digunakan untuk menyimpan dan bertukar informasi dari web server. 
 - JSON lebih sederhana, mudah dibaca, dan lebih cepat dibandingkan XML.
 - JSON mengirimkan data dengan menguraikannya terlebih dahulu kemudian barulah dikirimkan melalui internet.
 - JSON menggunakan penyimpanan secara efisien, namun tidak rapi untuk dilihat.
@@ -36,10 +35,10 @@ Untuk menampilkan data pada sebuah platform kita membutuhkan data yang dimuat da
 9. Menjalankan command makemigrations dan migrate. Menjalankan loaddata untuk mengupdate data di server dengan data pada database.
 
 ### POSTMAN-html
-![mywatchlist\postman_html.jpg]
+![](mywatchlist\postman_html.jpg)
 
 ### POSTMAN-xml
-![mywatchlist\postman_xml.jpg]
+![](mywatchlist\postman_xml.jpg)
 
 ### POSTMAN-json
-![mywatchlist\postman_json.jpg]
+![](mywatchlist\postman_json.jpg)
