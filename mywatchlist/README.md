@@ -35,10 +35,10 @@ Untuk menampilkan data pada sebuah platform kita membutuhkan data yang dimuat da
 9. Menjalankan command makemigrations dan migrate. Menjalankan loaddata untuk mengupdate data di server dengan data pada database.
 
 ### POSTMAN-html
-![](postman_html.jpg)
+![](C:\Users\marcelinus gerardo\Documents\College\Semester 3\PBP\Lab1.1\postman_html.jpg)
 
 ### POSTMAN-xml
-![](postman_xml.jpg)
+![](C:\Users\marcelinus gerardo\Documents\College\Semester 3\PBP\Lab1.1\postman_xml.jpg)
 
 ### POSTMAN-json
-![](postman_json.jpg)
+![](C:\Users\marcelinus gerardo\Documents\College\Semester 3\PBP\Lab1.1\postman_json.jpg)
