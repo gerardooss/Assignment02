@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 1,
+        "fields": {
+            "watched": "Yes",
+            "title": "The Dark Knight",
+            "movie_rating": 5,
+            "release_date": "2008-7-18",
+            "review": "This movie is a work of art. The finest sequel ever made. I don't think we will see another movie like this for a long time. And for me, the best movie ever!"
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 2,
+        "fields": {
+            "watched": "No",
+            "title": "Star Wars: Episode V - The Empire Strikes Back",
+            "movie_rating": 4,
+            "release_date": "1980-5-21",
+            "review": "Congratulations have to go to line producer Gary Kurtz and director Irvin Kershner in pushing the production to out-perform A New Hope, even though the consequence was a film that came in massively over budget, and almost cost Lucas his hard fought independence from the Hollywood system."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 3,
+        "fields": {
+            "watched": "Yes",
+            "title": "Parasite",
+            "movie_rating": 4,
+            "release_date": "2019-6-21",
+            "review": "The themes of this story are not just localized to Korea, however. They are the story of global capitalism, and the specter of American materialism (and imperialism; note the Indians) looms heavily over the film."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 4,
+        "fields": {
+            "watched": "Yes",
+            "title": "WALL-E",
+            "movie_rating": 4,
+            "release_date": "2008-8-13",
+            "review": "This will end up being the animated film of the year and I had the same 'wow' feeling as after seeing Ratatouille. Considering that animated films have always played second-fiddle to live-action, and have been aimed at kids, it's ironic that once again Pixar produces a film that rivals any live action on every level. Bravo!"
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 5,
+        "fields": {
+            "watched": "No",
+            "title": "Top Gun: Maverick",
+            "movie_rating": 5,
+            "release_date": "2022-5-27",
+            "review": "Top Gun Maverick is an awesome action film that lives up to the original film and way superior as well. It is one awesome thrill ride that will have the audiences gasping for air with its exhilarating aerial combat scenes."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 6,
+        "fields": {
+            "watched": "No",
+            "title": "Good Will Hunting",
+            "movie_rating": 4,
+            "release_date": "1997-12-5",
+            "review": "I don't think I have been this moved by a movie in a while. Good Will Hunting is an incredible movie and if I had to say what I think is Gus Van Sant's best film, this would be it. It is a slow-burner, but I think this was purposefully done and it added to the film's poignancy and psychological aspect."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 7,
+        "fields": {
+            "watched": "Yes",
+            "title": "Batman Begins",
+            "movie_rating": 4,
+            "release_date": "2005-6-23",
+            "review": "Overall, I'd have to label Batman Begins 'The must see movie of the summer' - it's a well written, authoritatively directed, impeccably acted (especially by Bale's powerhouse lead performance and Cillian Murphy's sickly menacing Scarecrow) and very high quality production."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 8,
+        "fields": {
+            "watched": "No",
+            "title": "Chinatown",
+            "movie_rating": 3,
+            "release_date": "1974-6-20",
+            "review": "In a recent New York Times piece, they called CHINATOWN 'a meditation on evil', which is spot-on. Set in 1937, this movie is just all-round perfect, first and foremost how everything is connected within the grand structure of the movie, that is rich in themes (water, evil, trust, guilt, greed) and even richer in suspense, as the audience—just like our protagonist—tries to find out what is happening. The story is 'complex' for sure, but it's not 'complicated'. Everything makes sense in the end and the complexity pays off big time."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 9,
+        "fields": {
+            "watched": "No",
+            "title": "Gone Girl",
+            "movie_rating": 4,
+            "release_date": "2014-10-3",
+            "review": "I like it when a movie can keep me guessing until the end, and Gone Girl just did that. Most of the time I didn't know where this film was going, and each new twist and turn was a surprise."
+        }
+    },
+    {
+        "model": "mywatchlist.moviedetails",
+        "pk": 10,
+        "fields": {
+            "watched": "Yes",
+            "title": "Mad Max: Fury Road",
+            "movie_rating": 4,
+            "release_date": "2015-5-14",
+            "review": "It was VERY refreshing to see a film where so many women are NOT mindless objects to be killed or protected--several are about as strong and heroic as Max himself--and no doubt this is why women seemed to like the film so much."
+        }
+    }
+]
