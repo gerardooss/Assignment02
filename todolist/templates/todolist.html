@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1 style="text-align:center;
+  font-family:Cambria">Task Manager</h1>
+
+  <p style="font-size:x-large; text-align: center;
+  color: rgb(166, 166, 166)" >Hello, {{ user.get_username }}! Ready for a sunny day? </p>
+
+  <table align="center" border="2">
+    <tr>
+      <th style="min-width:100px">Date</th>
+      <th style="min-width:255px">Title</th>
+      <th style="min-width:255px">Description</th>
+      <th style="min-width:80px">Status</th>
+      <th style="min-width:80px">Action</th>
+      <th style="min-width:80px">Delete</th>
+
+    </tr>
+    {% for i in todo_details %}
+      <tr>
+        <td>{{i.date}}</td>
+        <td>{{i.title}}</td>
+        <td>{{i.description}}</td>
+        <td style="text-align: center">
+          {% if i.is_finished %}
+          ✅
+          {% else %}
+          ❌
+          {% endif %}
+        </td>
+        <td style="text-align: center"> <button><a href="{% url 'todolist:status' i.id %}">Check </button></td>
+        <td style="text-align: center"> <button><a href="{% url 'todolist:delete' i.id %}">Delete </button></td>
+      </tr>
+    {% endfor %}
+
+    {% comment %} Add the data below this line {% endcomment %}
+
+  </table>
+  <div style="text-align: center">
+    <p></p>
+    <button style="background-color:rgb(80, 171, 228)"><a href="{% url 'todolist:add_activity' %}">Add new activity</a></button>
+    <button style="background-color:rgb(181, 181, 181)"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+    <p style="color:rgb(166, 166, 166)">Last login: {{ last_login }}</p>
+  </div>  
+
+
+ {% endblock content %}
