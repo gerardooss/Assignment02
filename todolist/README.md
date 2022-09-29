@@ -1,4 +1,5 @@
  # Assignment 4
+https://katalog-kita-semua.herokuapp.com/todolist/
  
  ## Kegunaan {% csrf_token %} pada elemen <form> dan pengaruhnya
 `{% csrf_token %}` berguna sebagai proteksi dari serangan cross-site request forgery. `{% csrf_token %}` akan men-generate token keamanan secara random yang sifatnya unique untuk setiap user session. Token keamanan ini digunakan untuk menghindari serangan dari attacker karena tanpa token yang valid, attacker tidak bisa membuat valid request ke backend server.
