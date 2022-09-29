@@ -19,11 +19,12 @@ Bisa. Kita dapat memanfaatkan tag `<input>` dengan menggunakan property name dan
 4. Menambahkan function untuk registrasi, login, dan logout user. Menambahkan file `registration.html` dan `login.html`.
 5. Membuat file `todolist.html` untuk mengatur tampilan website yang menunjukkan task list user. Pada file ini terdapat button untuk menambah task.
 6. Membuat class `NewForms()` yang berisi kompenen data yang diperlukan. Membuat `addtask.html` untuk mengatur tampilan saat menambah task.
-7. Melakukan routing pada urls.py pada folder todolist dengan menambahkan ```
+7. Melakukan routing pada urls.py pada folder todolist dengan menambahkan 
+```
 path('', show_todolist, name='show_todolist'),
 path('register/', register, name='register'),
 path('login/', login_user, name='login'),
 path('logout/', logout_user, name='logout'),
 path('create-task/', add_activity, name='add_activity'),
 ```
-8. Melakukan deployment ke Heroku.
+8. Memastikan deployment ke Heroku berhasil.
