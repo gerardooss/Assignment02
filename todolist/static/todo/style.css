@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("bg2.jpg");
+}
+
+.login {
+    width: 360px;
+    height: min-content;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 8px 8px #c6c5c5;
+}
+.login h1{
+    font-size: x-large;
+    font-style: italic;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.login form input[type="submit"]{
+    margin-top: 12px;
+    margin-bottom: 6px;
+}

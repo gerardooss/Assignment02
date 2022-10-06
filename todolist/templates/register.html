@@ -1,34 +1,65 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
-<title>Registrasi Akun</title>
+<title>Account Registration</title>
+<link rel="stylesheet" href="{% static 'todo/style.css' %}">
 {% endblock meta %}
 
 {% block content %}  
-
-<div class = "login">
+<body>
+    <style>
     
-    <h1>Registration Form</h1>  
+        /* body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(to bottom right, rgb(54, 6, 96), rgb(50, 0, 59));
+        }    */
+    
+        .login {
+            width:max-content ;
+            height: min-content;
+            padding: 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 5px 5px #a3a3a3;
+        }
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Register"/></td>  
-                </tr>  
-            </table>  
-        </form>
+        .login form input[type="submit"]{
+            font-weight: bold;
+            background-color: rgb(233, 150, 27);
+            color: azure;
+            margin-top: 12px;
+        }
+            
+    </style>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+    <div class = "login">
+        
+        <h1>Register Now!</h1>  
 
-</div>  
+            <form method="POST" >  
+                {% csrf_token %}  
+                <table>  
+                    {{ form.as_table }}  
+                    <tr>  
+                        <td></td>
+                        <td><input class="btn" type="submit" name="submit" value="Register" style="float:right"/></td>  
+                    </tr>  
+                </table>  
+            </form>
+
+        {% if messages %}  
+            <ul>   
+                {% for message in messages %}  
+                    <li>{{ message }}</li>  
+                    {% endfor %}  
+            </ul>   
+        {% endif %}
+
+    </div>  
+</body>
 
 {% endblock content %}

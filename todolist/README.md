@@ -28,3 +28,30 @@ path('logout/', logout_user, name='logout'),
 path('create-task/', add_activity, name='add_activity'),
 ```
 8. Memastikan deployment ke Heroku berhasil.
+
+
+
+
+# Assignment 5
+
+## Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+1. Inline; merupakan styling yang dilakukan untuk merujuk pada satu elemen spesifik saja sehingga tidak berengaruh untuk elemen yang sama di tempat lain. Kelebihan: kita bisa mengatur elemen secara detail tanpa mempengaruhi elemen lain. Kekurangan: membutuhkan waktu cukup lama jika mengatur elemen satu per satu.
+2. Internal; styling ini akan berpengaruh terhadap elemen-elemen dalam satu file. Kelebihan: kita hanya perlu cukup mengatur styling sekali saja, tidak perlu mengulang.
+3. External; kita dapat mengatur tampilan seluruh html dalam satu projek hanya dengan mengubah satu file CSS saya. Kelebihan: membutuhkan waktu singkat.
+
+Presidensi: Inline > Internal > External --> internal paling tinggi
+
+## Jelaskan tag HTML5 yang kamu ketahui.
+Berikut adalah beberapa tag pada HTML5 yang saya ketahui
+`<h1> - <h6>` untuk membuat header (semakin h1 lebih tebal dibanding h2 dan seterusnya). `<form>` untuk menampilkan form pada website. `<p>` untuk penulisan teks pada website. `<table>` untuk membuat table pada website. `<style>` untuk melakukan internal styling.
+
+## Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+1. Element Selector, styling berdasarkan tag, contoh `h1{...}`
+2. ID Selector, merujuk pada elemen yang memiliki id, contoh `#idname{...}`
+3. Class Selecter, merujuk pada elemen yang memiliki class yang sesuai, contoh `.login{...}`
+4. Universal selector,styling untuk semua elemen, ditandai dengan penggunaan `*{...}`
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+1. Menghubungkan bootstrap framefork pada `base.html`
+2. Membuat sebuah static file untuk melakukan external styling. Menjalankan command `python manage.py collectstatic`.
+3. Menghubungkan eksternal styling dengan file html yang diinginkan dengan potongan code `<link rel="stylesheet" href="{% static 'todo/style.css' %}">`

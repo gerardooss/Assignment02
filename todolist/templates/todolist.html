@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 
  {% block content %}
+ <style>
+
+  .login {
+      width: 500px ;
+      height: max-content;
+      padding: 20px;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 5px 5px #a3a3a3;
+  }
+
+  .login form input[type="submit"]{
+      font-weight: bold;
+      background-color: rgb(9, 210, 106);
+      color: azure;
+      margin-top: 12px;
+  }
+</style>
 
   <h1 style="text-align:center;
   font-family:Cambria">Task Manager</h1>
@@ -8,40 +26,40 @@
   <p style="font-size:x-large; text-align: center;
   color: rgb(166, 166, 166)" >Hello, {{ user.get_username }}! Ready for a sunny day? </p>
 
-  <table align="center" border="2">
-    <tr>
-      <th style="min-width:100px">Date</th>
-      <th style="min-width:255px">Title</th>
-      <th style="min-width:255px">Description</th>
-      <th style="min-width:80px">Status</th>
-      <th style="min-width:80px">Action</th>
-      <th style="min-width:80px">Delete</th>
-
-    </tr>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for i in todo_details %}
-      <tr>
-        <td>{{i.date}}</td>
-        <td>{{i.title}}</td>
-        <td>{{i.description}}</td>
-        <td style="text-align: center">
-          {% if i.is_finished %}
-          ✅
-          {% else %}
-          ❌
-          {% endif %}
-        </td>
-        <td style="text-align: center"> <button><a href="{% url 'todolist:status' i.id %}">Check </button></td>
-        <td style="text-align: center"> <button><a href="{% url 'todolist:delete' i.id %}">Delete </button></td>
-      </tr>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h4 class="card-title">{{i.title}} | {% if i.is_finished %}
+              ✅
+            {% else %}
+              ❌
+            {% endif %}
+            </h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{i.date}}</h6>
+            <p class="card-text">{{i.description}}</p>
+            <div class="flex justify-between gap-3">
+              <div class="flex flex-col justify-center rounded">
+                <td style="text-align: center"> <button class="btn" style="background-color:rgb(127, 255, 124); border-color:rgb(0, 160, 61); border-width: 2px;">
+                  <a href="{% url 'todolist:status' i.id %}">Check </button></td>
+                <td style="text-align: center"> <button class="btn" style="background-color:rgb(255, 155, 155); border-color: brown; border-width: 2px;">
+                  <a href="{% url 'todolist:delete' i.id %}">Delete </button></td>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endfor %}
+  </div>
 
-    {% comment %} Add the data below this line {% endcomment %}
-
-  </table>
   <div style="text-align: center">
     <p></p>
-    <button style="background-color:rgb(80, 171, 228)"><a href="{% url 'todolist:add_activity' %}">Add new activity</a></button>
-    <button style="background-color:rgb(181, 181, 181)"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+    <button class="btn" style="background-color:rgb(219, 237, 255); border-color:blue; border-width: 2px;">
+      <a href="{% url 'todolist:add_activity' %}">Add new activity</a></button>
+    <button class="btn" style="background-color:rgb(255, 155, 155); border-color: brown; border-width: 2px;">
+      <a href="{% url 'todolist:logout' %}">Logout</a></button>
+
     <p style="color:rgb(166, 166, 166)">Last login: {{ last_login }}</p>
   </div>  
 
