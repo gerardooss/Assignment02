@@ -8,8 +8,10 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.core import serializers
+from django.shortcuts import get_object_or_404
 
 class NewForms(forms.Form):
     title = forms.CharField(label="Title")
@@ -35,7 +37,7 @@ def add_activity(request):
                 description = forms.cleaned_data["description"],
             )
             new_task.save()
-            return redirect("todolist:show_todolist")
+            return redirect("todolist:show_ajax")
 
     forms = NewForms()
     context={"form":forms}
@@ -43,15 +45,16 @@ def add_activity(request):
 
 @login_required(login_url='/todolist/login/')
 def status(request, id):
-    target = Task.objects.get(pk=id)
+    # target= get_object_or_404(Task, pk=id)
+    target = Task.objects.get(pk=id, user=request.user)
     target.is_finished = not(target.is_finished)
     target.save()
-    return redirect("todolist:show_todolist")
+    return redirect("todolist:show_ajax")
 
 @login_required(login_url='/todolist/login/')
 def delete(request, id):
-    Task.objects.get(id=id).delete()
-    return redirect("todolist:show_todolist")
+    Task.objects.get(id=id, user=request.user).delete()
+    return redirect("todolist:show_ajax")
 
 def register(request):
     form = UserCreationForm()
@@ -73,7 +76,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse("todolist:show_todolist"))
+            response = HttpResponseRedirect(reverse("todolist:show_ajax"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
         else:
@@ -86,3 +89,13 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+def show_json(request):
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+# ajax function
+@login_required(login_url='/todolist/login/')
+def show_ajax(request):
+    context = {}
+    return render(request, "todolist_ajax.html", context)
