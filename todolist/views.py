@@ -1,4 +1,7 @@
 import datetime
+from re import T
+from turtle import title
+from xmlrpc.client import DateTime
 from todolist.models import Task
 from django import forms
 from django.shortcuts import render
@@ -8,13 +11,13 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
 from django.urls import reverse
 from django.core import serializers
 from django.shortcuts import get_object_or_404
 
 class NewForms(forms.Form):
-    title = forms.CharField(label="Title")
+    title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'size': 37}))
     description = forms.CharField(label="Description", widget=forms.Textarea)
 
 @login_required(login_url='/todolist/login/')
@@ -42,6 +45,25 @@ def add_activity(request):
     forms = NewForms()
     context={"form":forms}
     return render(request, "addtask.html", context)
+
+# flag
+@login_required(login_url='/todolist/login/')
+def add_ajax(request):
+    if request.method == "POST":
+        title=request.POST.get("title")
+        description=request.POST.get("description")
+        user=request.user
+        task = Task(
+            title=title,
+            description=description,
+            user=user,
+        )
+        task.save()
+        return HttpResponse(
+            serializers.serialize("json", [task]),
+            content_type="application/json",
+        )
+    return HttpResponse("Invalid method", status_code=405)
 
 @login_required(login_url='/todolist/login/')
 def status(request, id):

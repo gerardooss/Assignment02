@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <style>
@@ -8,6 +9,7 @@
 </style>
 
 <body class="show">
+
     <h1 style="text-align:center;
     font-family:Cambria; color: rgb(255, 255, 255);">Task Manager</h1>
 
@@ -22,74 +24,102 @@
         <p></p>
         <a type="button" class="btn btn-primary" href="{% url 'todolist:add_activity' %}">Add Activity</a>        
         <!-- Modal Trigger Button -->
-        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#02modal">
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Add Activity (alpha)
         </button>
         <a type="button" class="btn btn-danger" href="{% url 'todolist:logout' %}">Logout</a>
     </div> 
     
     <!-- Modal -->
-    <div class="modal fade" id="02modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- form -->
-                    <form method="POST">
-                        {% csrf_token %}
-                        <table>
-                          {{ form.as_table }}
-                          <tr>
-                            <td></td>
-                            <td><input class="btn" type="submit" name="submit" value="Add" style="float:right"/></td>
-                          </tr>
-                        </table>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Task</h1>
             </div>
+            <div class="modal-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="col-form-label">Title:</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description"></textarea>
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close"c>Close</button>
+              <button type="submit" class="btn btn-primary" value="submit" data-bs-dismiss="modal" id="addtask">Add</button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
 
     <!-- AJAX function -->
     <script>
+        function ajax_task(e) {
+            e.preventDefault()
+            const titleTask = $("#title").val()
+            const descriptionTask = $("#description").val()
+
+            const data = {
+                title: titleTask,
+                description: descriptionTask,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'todolist:add_activity' %}",
+                data: data, 
+                success: () => {
+                    ajax_get()
+                    $('.modal').hide();
+                },
+                dataType: 'json'
+            });
+        }
+
+
         function ajax_get() {
-        $.get('/todolist/json', function (todolist) {
-            $('#01cards').empty()
-            todolist.map((task) => {
-                $('#01cards').append(
-                    `
-                    <div class="col">
-                        <div class="card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title">${task.fields.title} | ${task.fields.is_finished}</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">${task.fields.date}</h6>
-                            <p class="card-text">${task.fields.description}</p>
-                            <div class="flex justify-between gap-3">
-                            <div class="flex flex-col justify-center rounded">
-                                <a type="button" class="btn btn-success" href="/todolist/status/${task.pk}">Check</a>
-                                <a type="button" class="btn btn-danger" href="/todolist/delete/${task.pk}">Delete</a>
-                            </div>  
+            $.get('/todolist/json', function (todolist) {
+                $('#01cards').empty()
+                todolist.map((task) => {
+                    $('#01cards').append(
+                        `
+                        <div class="col">
+                            <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h4 class="card-title">${task.fields.title} | ${task.fields.is_finished ? "slese":"blum"}</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">${task.fields.date}</h6>
+                                <p class="card-text">${task.fields.description}</p>
+                                <div class="flex justify-between gap-3">
+                                <div class="flex flex-col justify-center rounded">
+                                    <a type="button" class="btn btn-success" href="/todolist/status/${task.pk}">Check</a>
+                                    <a type="button" class="btn btn-danger" href="/todolist/delete/${task.pk}">Delete</a>
+                                </div>  
+                                </div>
+                            </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                    `
-                )
+                        `
+                    )
+                })
             })
-        })
-    }
+        }
 
-    $(document).ready(function(){
-        ajax_get()
-    });  
+        $(document).ready(function(){
+            $("#addtask").click(ajax_task)
+            $("#close").click(() => {
+                $('.modal').hide();
+            })
+            ajax_get()
+        });
 
     </script>
 
